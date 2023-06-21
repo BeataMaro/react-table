@@ -47,13 +47,13 @@ function App() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <main>
           <Table photos={photos} />
           <button onClick={handlePrevPage} disabled={page === 1 ? true : false}>
             Prev
           </button>
           <button onClick={handleNextPage}>Next</button>
-        </div>
+        </main>
       )}
     </>
   );

@@ -1,15 +1,15 @@
-import { IApi } from "../../models/api.model";
-import PhotoRow from "../PhotoRow/PhotoRow";
+import { IApi } from '../../models/api.model';
+import PhotoRow from '../PhotoRow/PhotoRow';
 import './Table.scss';
 
-const Table = (props: {photos: IApi}) => {
-    return (<table>
-        {/* <caption><h1>Photos made in Scandinavia - unsplash.com </h1></caption> */}
+const Table = (props: { photos: IApi }) => {
+  return (
+    <div className="table-wrapper">
+      <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Author</th>
-            <th>Description</th>
             <th>Likes</th>
             <th>Image</th>
           </tr>
@@ -17,7 +17,9 @@ const Table = (props: {photos: IApi}) => {
         <tbody>
           <PhotoRow photos={props.photos} />
         </tbody>
-      </table>)
-}
+      </table>
+    </div>
+  );
+};
 
 export default Table;

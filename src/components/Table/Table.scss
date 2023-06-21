@@ -1,28 +1,63 @@
-table {
-  margin-bottom: 2rem;
+@import '../../index.scss';
 
-  & tr,
-  td {
-    border: 1px solid rgb(60, 95, 235);
-    padding: 1rem;
-  }
+.table-wrapper {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 
-  & tr:first-child td:first-child {
-    border: 2px solid crimson;
-    border-top-left-radius: 10px;
-  }
+  table {
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    min-width: 65vw;
+    border-collapse: collapse;
+    background-color: rgba(skyblue, 0.2);
 
-  & tr:first-child td:last-child {
-    border: 2px solid tomato;
-    border-top-right-radius: 10px;
-  }
+    & td {
+      border-left: 1px solid $grey;
+      border-bottom: 1px solid $grey;
 
-  & tr:last-child td:first-child {
-    border: 2px solid orange;
-    border-bottom-left-radius: 10px;
-  }
-  & tr:last-child td:last-child {
-    border: 2px solid green;
-    border-bottom-right-radius: 10px;
+      &:first-child {
+        border-left: none;
+      }
+    }
+
+    & tr:last-child td {
+      border-bottom: none;
+    }
+
+    & th {
+      background-color: $black;
+      color: $grey;
+      border-left: 2px solid $grey;
+
+      &:first-child {
+        border-radius: 8px 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 8px 0 0;
+      }
+    }
+
+    & th,
+    tr,
+    td {
+      padding: 0.2rem;
+
+      @media (min-width: 650px) {
+        & {
+          padding: 1rem;
+        }
+      }
+    }
+
+    & tr:last-child td:first-child {
+      border-radius: 0 0 0 8px;
+    }
+    & tr:last-child td:last-child {
+      border-radius: 0 0 8px 0;
+    }
   }
 }
