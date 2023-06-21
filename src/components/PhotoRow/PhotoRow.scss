@@ -7,6 +7,10 @@ tr.photo-row {
     background-color: rgba(teal, 0.2);
     box-shadow: 1px 1px 12px rgba($black, 0.4);
     cursor: pointer;
+    
+    & .image-cell {
+      background-color: rgba(teal, 0.08);
+    }
   }
 
   & .image-cell {
@@ -14,6 +18,7 @@ tr.photo-row {
     display: flex;
     place-items: center;
     transition: 0.3s ease;
+    background-color: $black;
   }
 
   & td img.image-thumb {
