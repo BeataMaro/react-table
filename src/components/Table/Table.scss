@@ -1,0 +1,28 @@
+table {
+  margin-bottom: 2rem;
+
+  & tr,
+  td {
+    border: 1px solid rgb(60, 95, 235);
+    padding: 1rem;
+  }
+
+  & tr:first-child td:first-child {
+    border: 2px solid crimson;
+    border-top-left-radius: 10px;
+  }
+
+  & tr:first-child td:last-child {
+    border: 2px solid tomato;
+    border-top-right-radius: 10px;
+  }
+
+  & tr:last-child td:first-child {
+    border: 2px solid orange;
+    border-bottom-left-radius: 10px;
+  }
+  & tr:last-child td:last-child {
+    border: 2px solid green;
+    border-bottom-right-radius: 10px;
+  }
+}

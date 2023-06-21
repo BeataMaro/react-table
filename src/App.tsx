@@ -1,25 +1,41 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { IPhoto } from './models/photo.model';
+import { IApi } from './models/api.model';
+import Table from './components/Table/Table';
+import Layout from './Layout/Layout';
+
+const initialApiResponse: IApi = {
+  results: [],
+  total: 0,
+  total_pages: 0,
+};
 
 function App() {
   const [page, setPage] = useState<number>(1);
-  const [photos, setPhotos] = useState<IPhoto[]>([]);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [photos, setPhotos] = useState<IApi>(initialApiResponse);
 
-  const API = `https://api.unsplash.com/photos?page=${page}&orientation=landscape&per_page=5&client_id=${
+  const API = `https://api.unsplash.com/search/photos?query=scandinavia&page=${page}&orientation=landscape&per_page=4&client_id=${
     import.meta.env.VITE_ACCESS_KEY
   }`;
+  // const API = `https://api.unsplash.com/search/photos?query=scandinavia&page=${page}&orientation=landscape&per_page=4&client_id=bubu
+  // `;
   const fetchPhotos = async (url: string) => {
     try {
       const res = await fetch(url);
       const data = await res.json();
       setPhotos(data);
     } catch (e) {
-      throw new Error();
+      console.log(e);
+    } finally {
+      setLoading(false);
     }
   };
+  function handlePrevPage() {
+    if (page > 0) setPage((prev) => (prev -= 1));
+  }
 
-  function handleNextClick() {
+  function handleNextPage() {
     setPage((prev) => (prev += 1));
   }
 
@@ -28,29 +44,15 @@ function App() {
   }, [page]);
   return (
     <>
-      {photos.length && (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
         <div>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Author</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {photos.map((photo) => (
-                <tr key={photo.id}>
-                  <td>{photo.id}</td>
-                  <td>{photo.user.first_name}</td>
-                  <td>
-                    <img src={photo.urls.small} alt={photo.alt_description} className="image-thumb" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <button onClick={handleNextClick}>Next</button>
+          <Table photos={photos} />
+          <button onClick={handlePrevPage} disabled={page === 1 ? true : false}>
+            Prev
+          </button>
+          <button onClick={handleNextPage}>Next</button>
         </div>
       )}
     </>

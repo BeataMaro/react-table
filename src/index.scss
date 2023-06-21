@@ -2,6 +2,7 @@ $navy: #3a3179;
 
 img {
   max-width: 100%;
+  margin: auto;
 }
 
 :root {
@@ -74,4 +75,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+button:disabled {
+  opacity: 0.5;
 }

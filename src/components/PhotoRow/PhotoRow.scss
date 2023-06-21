@@ -1,0 +1,15 @@
+tr.photo-row {
+  display: table-row;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: rgb(110, 189, 147);
+    cursor: pointer;
+  }
+
+  & td img.image-thumb {
+    width: 25rem;
+    height: 10rem;
+    object-fit: cover;
+  }
+}
