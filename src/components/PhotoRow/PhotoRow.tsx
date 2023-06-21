@@ -17,13 +17,12 @@ const PhotoRow = (props: { photos: IApi }) => {
 
   return (
     <>
-      {results.map(({ slug, id, user, description, alt_description, likes, urls }: IPhoto) => (
+      {results.map(({ slug, id, user, alt_description, likes, urls }: IPhoto) => (
         <tr key={id} onClick={() => handleRowClick(slug)} className="photo-row">
           <td>{id}</td>
           <td>{user.first_name}</td>
-          <td>{description ? description : '---'}</td>
           <td>{likes}</td>
-          <td>
+          <td className="image-cell">
             <img src={urls.small} alt={alt_description} className="image-thumb" />
           </td>
         </tr>
