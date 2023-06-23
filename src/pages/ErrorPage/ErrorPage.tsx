@@ -1,18 +1,18 @@
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import './ErrorPage.scss';
 
-const ErrorPage = () => {
+export default function ErrorPage() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     return (
-      <div>
+      <div className="error-wrapper" role="alert">
         <h2>Something went wrong!</h2>
         <p>Error status {error?.status}</p>
         <p>{error.error?.message}</p>
-        <Link to='/'>Back to home</Link>
+        <i>&larr;</i>
+        <Link to="/">Back to home</Link>
       </div>
     );
   }
-};
-
-export default ErrorPage;
+}
