@@ -1,5 +1,8 @@
 header {
-    text-align: center;
     padding: 1.5rem;
-    color: rgb(35, 33, 37);
+    box-shadow: 1px 1px 12px rgba(0,0,0,.3);
+
+    .unsplash-logo {
+        width: 8rem;
+    }
 }

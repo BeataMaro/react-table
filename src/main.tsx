@@ -4,13 +4,12 @@ import './index.scss';
 import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Layout from './Layout/Layout.tsx';
-import PhotoDetails from './pages/PhotoDetails/PhotoDetails.tsx';
-import HomePage from './pages/HomePage/HomePage.tsx';
+import DetailsPage from './pages/DetailsPage/DetailsPage';
+import HomePage from './pages/HomePage/HomePage';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import { Provider } from 'react-redux';
-import { photoApi } from './services/api.service.tsx';
-import { store } from './store/store.tsx';
-
+import { photoApi } from './services/api.service';
+import { store } from './store/store';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/:username',
-        element: <PhotoDetails />,
+        element: <DetailsPage />,
         errorElement: <ErrorPage />,
       },
     ],

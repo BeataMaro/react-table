@@ -35,7 +35,7 @@ const StyledRow = styled.tr<props>`
   }
 `;
 
-export default function PhotoRow() {
+export default function TableRow() {
   const navigate = useNavigate();
   const apiResults = useSelector((state: RootState) => state.searchResults.searchResults);
 

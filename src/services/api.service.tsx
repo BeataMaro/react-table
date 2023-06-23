@@ -13,14 +13,21 @@ export const photoApi = createApi({
           import.meta.env.VITE_ACCESS_KEY
         }`,
     }),
-    // getRandomPhotos: builder.query({
-    //   query: () =>
-    //     `photos/random?count=30&page=20&orientation=landscape&client_id=${import.meta.env.VITE_ACCESS_KEY}`,
-    // }),
     getUserByUsername: builder.query<IUser, string>({
       query: (keyword) => `users/${keyword}/?client_id=${import.meta.env.VITE_ACCESS_KEY}`,
+    }),
+    getPhotosByUsername: builder.query<IPhoto[], string>({
+      query: (keyword) => `users/${keyword}/photos/?client_id=${import.meta.env.VITE_ACCESS_KEY}`,
+    }),
+    getPhotosByPage: builder.query<IApi, string>({
+      query: (query) => `photos/?page=${query}&client_id=${import.meta.env.VITE_ACCESS_KEY}`,
     }),
   }),
 });
 
-export const { useGetPhotoByKeywordQuery, useGetUserByUsernameQuery } = photoApi;
+export const {
+  useGetPhotoByKeywordQuery,
+  useGetUserByUsernameQuery,
+  useGetPhotosByUsernameQuery,
+  useGetPhotosByPageQuery,
+} = photoApi;

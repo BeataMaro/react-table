@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useGetPhotoByKeywordQuery } from '../../services/api.service';
 import { updateSearchResults } from '../../services/resultsSlice';
 import Table from '../../components/Table/Table';
+import Spinner from '../../components/Spinner/Spinner';
+import ErrorPage from '../ErrorPage/ErrorPage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 // const InitialPhotoState: IPhoto = {
 //   id: '',
@@ -41,42 +45,35 @@ import Table from '../../components/Table/Table';
 
 export default function HomePage() {
   const [query, setQuery] = useState<string>('');
-
   const dispatch = useDispatch();
 
-  const { data, error, isLoading } = useGetPhotoByKeywordQuery( query || 'nordic');
+  const { data, error, isLoading } = useGetPhotoByKeywordQuery(query || 'nordic');
 
   useEffect(() => {
     if (data?.results) {
-      console.log(data);
       dispatch(updateSearchResults(data?.results));
     }
   }, [data, dispatch]);
 
   function handleSearch(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
-      setQuery(e.target.value);
-    }
+    setQuery(e.target.value);
+  }
 
   return (
     <>
       <main>
-        <input type="text" onChange={(e) => handleSearch(e)} placeholder="search"/>
+        <input
+          type="search"
+          name="search"
+          onChange={(e) => handleSearch(e)}
+          placeholder="search..."
+        />
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        {isLoading && <Spinner />}
         {!error && !isLoading && data && <Table />}
-
       </main>
-      {/* {loading && <p>loading...</p>}
-        {error && <ErrorPage />}
-        {!error && !loading && (
-          <div className="cards-container">
-            <h2>Dogs!</h2>
-            {data ? (
-              <Table photos={data} />)
-            : (
-              <p>0 results. Please, try to search for another word.</p>
-            )}
-          </div>
-        )} */}
+      {error && <ErrorPage />}
     </>
   );
 }
