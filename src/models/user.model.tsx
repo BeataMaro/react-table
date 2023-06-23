@@ -25,6 +25,8 @@ portfolio_url: string;
 profile_image?: 
 {
     small: string;
+    medium: string;
+    large: string;
 }
 social?: {
     instagram_username?: string, 

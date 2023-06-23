@@ -10,6 +10,9 @@ interface props {
 
 const StyledRow = styled.tr<props>`
   background-color: ${({ bgcolor }) => bgcolor};
+  letter-spacing: 2px;
+  color: lightgrey;
+  text-shadow: 1px 1px rgba(0,0,0,.8);
   transition: 0.3s ease;
 
   &:hover {
@@ -33,7 +36,6 @@ const StyledRow = styled.tr<props>`
 `;
 
 export default function PhotoRow() {
-
   const navigate = useNavigate();
   const apiResults = useSelector((state: RootState) => state.searchResults.searchResults);
 

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetPhotoByKeywordQuery } from '../../services/api.service';
 import { updateSearchResults } from '../../services/resultsSlice';
@@ -40,9 +40,11 @@ import Table from '../../components/Table/Table';
 // };
 
 export default function HomePage() {
+  const [query, setQuery] = useState<string>('');
+
   const dispatch = useDispatch();
 
-  const { data, error, isLoading } = useGetPhotoByKeywordQuery('world');
+  const { data, error, isLoading } = useGetPhotoByKeywordQuery( query || 'nordic');
 
   useEffect(() => {
     if (data?.results) {
@@ -51,9 +53,18 @@ export default function HomePage() {
     }
   }, [data, dispatch]);
 
+  function handleSearch(e: ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+      setQuery(e.target.value);
+    }
+
   return (
     <>
-      <main>{!error && !isLoading && data && <Table photos={data} />}</main>
+      <main>
+        <input type="text" onChange={(e) => handleSearch(e)} placeholder="search"/>
+        {!error && !isLoading && data && <Table />}
+
+      </main>
       {/* {loading && <p>loading...</p>}
         {error && <ErrorPage />}
         {!error && !loading && (

@@ -1,8 +1,8 @@
-import { IApi } from '../../models/api.model';
 import PhotoRow from '../PhotoRow/PhotoRow';
 import './Table.scss';
 
-export default function Table(props: { photos: IApi }) {
+export default function Table() {
+
   return (
     <div className="table-wrapper">
       <table>
