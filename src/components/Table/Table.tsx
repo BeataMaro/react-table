@@ -2,7 +2,7 @@ import { IApi } from '../../models/api.model';
 import PhotoRow from '../PhotoRow/PhotoRow';
 import './Table.scss';
 
-const Table = (props: { photos: IApi }) => {
+export default function Table(props: { photos: IApi }) {
   return (
     <div className="table-wrapper">
       <table>
@@ -15,11 +15,10 @@ const Table = (props: { photos: IApi }) => {
           </tr>
         </thead>
         <tbody>
-          <PhotoRow photos={props.photos} />
+          <PhotoRow />
         </tbody>
       </table>
     </div>
   );
 };
 
-export default Table;

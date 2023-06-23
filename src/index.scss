@@ -17,12 +17,12 @@ $black: #1d1d23;
   line-height: 1.5;
   font-weight: 400;
   color: $black;
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  // background-color: #242424;
+  // font-synthesis: none;
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,65 +39,73 @@ body {
     #302b63,
     #0f0c29
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-image: url('./assets/shattered.webp');
+  background-color: $navy;
+  background-image: url(/src/assets/y-so-serious-white.png);
+  // background-image: url(/src/assets/shattered.webp);
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
 
-  h1 {
-    font-size: 3em;
-    line-height: 1.1;
-  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
-  main {
-    min-height: 80vh;
-  }
 
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-
-    &:hover {
-      color: $navy;
+    h1 {
+      font-size: 3em;
+      line-height: 1.1;
     }
-  }
 
-  img {
-    max-width: 100%;
-    margin: auto;
-  }
+    // main {
+    //   min-height: 80vh;
+    // }
 
-  button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    color: $grey;
-    font-size: 1em;
-    font-weight: 500;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-  button:hover {
-    background-color: rgba(teal, 0.3);
-    color: $black;
-  }
+    a {
+      font-weight: 500;
+      color: #646cff;
+      text-decoration: inherit;
 
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
+      &:hover {
+        color: $navy;
+      }
+    }
 
-  button:disabled {
-    opacity: 0.5;
-    background-color: transparent;
-    color: $black;
-    cursor: not-allowed;
+    img {
+      max-width: 100%;
+      margin: auto;
+    }
 
-    &:hover {
-      background-color: inherit;
-      color: inherit;
+    button {
+      border-radius: 8px;
+      border: 1px solid transparent;
+      padding: 0.6em 1.2em;
+      color: $grey;
+      font-size: 1em;
+      font-weight: 500;
+      background-color: #1a1a1a;
+      cursor: pointer;
+      transition: border-color 0.25s;
+    }
+    button:hover {
+      background-color: rgba(teal, 0.3);
+      color: $black;
+    }
+
+    button:focus,
+    button:focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      background-color: transparent;
+      color: $black;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: inherit;
+        color: inherit;
+      }
     }
   }
 }
@@ -132,12 +140,12 @@ body {
   }
 
   /* Dark theme  */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: hsl(var(--hue), 10%, 10%);
-      --fg: hsl(var(--hue), 10%, 90%);
-    }
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   :root {
+  //     --bg: hsl(var(--hue), 10%, 10%);
+  //     --fg: hsl(var(--hue), 10%, 90%);
+  //   }
+  // }
 
   /* Animation */
   @keyframes ring {

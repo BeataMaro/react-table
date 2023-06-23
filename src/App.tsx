@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import { IApi } from './models/api.model';
 import Table from './components/Table/Table';
 import spinner from './assets/spinner.svg';
+import { IPhoto } from './models/photo.model';
+import { redirect } from 'react-router-dom';
 
 const initialApiResponse: IApi = {
   results: [],
@@ -15,9 +16,11 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [photos, setPhotos] = useState<IApi>(initialApiResponse);
 
+
   const API = `https://api.unsplash.com/search/photos?query=scandinavia&page=${page}&orientation=landscape&per_page=4&client_id=${
     import.meta.env.VITE_ACCESS_KEY
   }`;
+  // const API = `https://api.unsplash.com/search/photos?query=scandinavia&page=${page}&orientation=landscape&per_page=4&client_id=nn`;
 
   const fetchPhotos = async (url: string) => {
     try {
@@ -25,13 +28,17 @@ function App() {
       const data = await res.json();
       setPhotos(data);
     } catch (e) {
-      console.log(e);
+      redirect('/404');
     } finally {
       setIsLoading(false);
     }
   };
   function handlePrevPage() {
     if (page > 0) setPage((prev) => (prev -= 1));
+  }
+
+  function handlePage(pageNum: number) {
+    setPage(pageNum);
   }
 
   function handleNextPage() {
@@ -103,9 +110,14 @@ function App() {
         <main>
           <Table photos={photos} />
           <button onClick={handlePrevPage} disabled={page === 1 ? true : false}>
-          &larr;	
+            &larr;
           </button>
-          <button onClick={handleNextPage}>&rarr;	</button>
+          {[...Array(photos.total_pages).keys()].slice(1).map((numb: number) => (
+            <button onClick={() => handlePage(numb)} key={numb}>
+              {numb}
+            </button>
+          ))}
+          <button onClick={handleNextPage}>&rarr; </button>
         </main>
       )}
     </>

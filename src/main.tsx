@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import './index.scss';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Layout from './Layout/Layout.tsx';
 import PhotoDetails from './pages/PhotoDetails/PhotoDetails.tsx';
+import HomePage from './pages/HomePage/HomePage.tsx';
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+import { Provider } from 'react-redux';
+import { photoApi } from './services/api.service.tsx';
+import { store } from './store/store.tsx';
+
 
 const router = createBrowserRouter([
   {
@@ -14,22 +19,29 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <App />
+        element: <Navigate replace to="/home" />,
+        errorElement: <ErrorPage />,
       },
       {
-        path: '/:slug',
-        element: <PhotoDetails />
-      }
-    ]
+        path: '/home',
+        element: <HomePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/:username',
+        element: <PhotoDetails />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
-  // {
-  //   path: '/*',
-  //   element: <ErrorPage />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <ApiProvider api={photoApi}>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
+    </ApiProvider>
   </React.StrictMode>
 );

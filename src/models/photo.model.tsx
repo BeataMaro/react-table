@@ -1,3 +1,5 @@
+import { IUser } from "./user.model";
+
 export interface IPhoto {
     created_at?: Date;
     updated_at?: Date;
@@ -13,23 +15,13 @@ export interface IPhoto {
     blur_hash: string;
     likes: number;
     liked_by_user?: boolean;
-    user: {
-      id: string;
-      updated_at: Date;
-      username: string;
-      name: string;
-      first_name: string;
-      profile_image: {
-        small: string;
-      };
-    };
+    user: IUser;
     current_user_collections: [];
     links: {
       self: string;
       html: string;
       download: string;
       download_location: string;
-
     }
     sponsorship?: {
       impressions_urls: [],
