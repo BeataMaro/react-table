@@ -17,12 +17,6 @@ $black: #1d1d23;
   line-height: 1.5;
   font-weight: 400;
   color: $black;
-  // background-color: #242424;
-  // font-synthesis: none;
-  // text-rendering: optimizeLegibility;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -50,19 +44,30 @@ body {
     display: flex;
     flex-direction: column;
 
-
     h1 {
       font-size: 3em;
       line-height: 1.1;
     }
 
-    // main {
-    //   min-height: 80vh;
-    // }
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main {
+      text-align: center;
+      padding: 1rem;
+
+      input[type='search'] {
+        padding: 1rem;
+        border-radius: 4px;
+        margin-right: -2rem;
+      }
+    }
 
     a {
       font-weight: 500;
-      color: #646cff;
+      color: grey;
       text-decoration: inherit;
 
       &:hover {
@@ -87,7 +92,7 @@ body {
       transition: border-color 0.25s;
     }
     button:hover {
-      background-color: rgba(teal, 0.3);
+      background-color: rgba(teal, 0.6);
       color: $black;
     }
 
@@ -106,114 +111,6 @@ body {
         background-color: inherit;
         color: inherit;
       }
-    }
-  }
-}
-// loading spinner
-
-.spinner-wrapper {
-  display: grid;
-  place-items: center;
-
-  .pl {
-    display: block;
-    width: 8em;
-    height: 8em;
-  }
-  .pl__ring,
-  .pl__ball1,
-  .pl__ball2 {
-    animation: 2s ease-in-out infinite;
-    // animation-duration: 2s;
-    // animation-timing-function: ease-in-out;
-    // animation-iteration-count: infinite;
-    transform-origin: 32px 32px;
-  }
-  .pl__ring {
-    animation-name: ring;
-  }
-  .pl__ball1 {
-    animation-name: ball1;
-  }
-  .pl__ball2 {
-    animation-name: ball2;
-  }
-
-  /* Dark theme  */
-  // @media (prefers-color-scheme: dark) {
-  //   :root {
-  //     --bg: hsl(var(--hue), 10%, 10%);
-  //     --fg: hsl(var(--hue), 10%, 90%);
-  //   }
-  // }
-
-  /* Animation */
-  @keyframes ring {
-    from {
-      animation-timing-function: ease-in-out;
-      stroke-dashoffset: -122.52;
-      transform: rotate(135deg);
-    }
-    15% {
-      animation-timing-function: ease-in;
-      stroke-dashoffset: -122.52;
-      transform: rotate(90deg);
-    }
-    35% {
-      animation-timing-function: ease-out;
-      stroke-dashoffset: -65.34;
-      transform: rotate(297.5deg);
-    }
-    55% {
-      animation-timing-function: ease-in-out;
-      stroke-dashoffset: -122.52;
-      transform: rotate(505deg);
-    }
-    70% {
-      animation-timing-function: ease-in-out;
-      stroke-dashoffset: -122.52;
-      transform: rotate(490deg);
-    }
-    85%,
-    to {
-      stroke-dashoffset: -122.52;
-      transform: rotate(497.5deg);
-    }
-  }
-  @keyframes ball1 {
-    from {
-      transform: rotate(14deg);
-    }
-    20% {
-      transform: rotate(-7deg);
-    }
-    60% {
-      transform: rotate(399deg);
-    }
-    75% {
-      transform: rotate(361deg);
-    }
-    90%,
-    to {
-      transform: rotate(374deg);
-    }
-  }
-  @keyframes ball2 {
-    from {
-      transform: rotate(-21deg);
-    }
-    25% {
-      transform: rotate(-47deg);
-    }
-    60% {
-      transform: rotate(364deg);
-    }
-    75% {
-      transform: rotate(326deg);
-    }
-    90%,
-    to {
-      transform: rotate(339deg);
     }
   }
 }

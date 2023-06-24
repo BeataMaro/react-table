@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
-import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
-import Layout from './Layout/Layout.tsx';
-import PhotoDetails from './pages/PhotoDetails/PhotoDetails.tsx';
-import HomePage from './pages/HomePage/HomePage.tsx';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import { Provider } from 'react-redux';
-import { photoApi } from './services/api.service.tsx';
-import { store } from './store/store.tsx';
-
+import { photoApi } from './services/api.service';
+import { store } from './store/store';
+import Layout from './Layout/Layout';
+import DetailsPage from './pages/DetailsPage/DetailsPage';
+import HomePage from './pages/HomePage/HomePage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import UserPage from './pages/UserPage/UserPage';
+import './index.scss';
 
 const router = createBrowserRouter([
   {
@@ -19,17 +19,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate replace to="/home" />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/home',
         element: <HomePage />,
         errorElement: <ErrorPage />,
       },
       {
         path: '/:username',
-        element: <PhotoDetails />,
+        element: <UserPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: ':username/:id',
+        element: <DetailsPage />,
         errorElement: <ErrorPage />,
       },
     ],

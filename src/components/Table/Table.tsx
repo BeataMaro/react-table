@@ -1,8 +1,8 @@
-import { IApi } from '../../models/api.model';
-import PhotoRow from '../PhotoRow/PhotoRow';
+import PaginationBar from '../PaginationBar/PaginationBar';
+import TableRow from '../TableRow/TableRow';
 import './Table.scss';
 
-export default function Table(props: { photos: IApi }) {
+export default function Table() {
   return (
     <div className="table-wrapper">
       <table>
@@ -15,9 +15,10 @@ export default function Table(props: { photos: IApi }) {
           </tr>
         </thead>
         <tbody>
-          <PhotoRow />
+          <TableRow />
         </tbody>
       </table>
+      <PaginationBar />
     </div>
   );
 };

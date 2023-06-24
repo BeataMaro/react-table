@@ -1,15 +1,15 @@
 import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { photoApi } from '../services/api.service';
-// import searchKeywordReducer from '../services/searchKeywordSlice';
 import searchResultsReducer from '../services/resultsSlice';
-// import newUserCardReducer from '../services/newCardSlice';
+import userReducer from '../services/userSlice';
+import portfolioReducer from '../services/portfolioSlice';
 
 export const store = configureStore({
   reducer: {
-    // searchKeyword: searchKeywordReducer,
     searchResults: searchResultsReducer,
-    // formCards: newUserCardReducer,
+    userResults: userReducer,
+    portfolioResults: portfolioReducer,
 
     [photoApi.reducerPath]: photoApi.reducer,
   },
@@ -18,9 +18,9 @@ export const store = configureStore({
 });
 
 const rootReducer = combineReducers({
-//   searchKeywordReducer,
   searchResultsReducer,
-//   newUserCardReducer,
+  userReducer,
+  portfolioReducer,
   [photoApi.reducerPath]: photoApi.reducer,
 });
 
