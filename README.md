@@ -45,23 +45,15 @@ Pagination support to navigate through large collections of photos.
 ### Technologies Used:
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-JavaScript library for building user interfaces.
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-Typed superset of JavaScript
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) 
-Build tool and development server that is specifically designed for modern web development, including React applications.
 
 ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
-Library for styling React components
 
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
-A predictable state container for JavaScript applications
-
-(https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg)The official, opinionated, batteries-included toolset for efficient Redux development
 
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-Library for handling routing in React applications
 
-Unsplash API - API for accessing high-quality photos
+![unsplash logo](./src/assets//Unsplash_Logo_Full.png)Unsplash API - API for accessing high-quality photos
