@@ -1,6 +1,4 @@
-# [Unsplash Photos Viewer](https://react-photos-viewer.netlify.app/)
-
-    Visit Site Demo [here](https://react-photos-viewer.netlify.app/)
+# [Unsplash Photos Viewer - site demo](https://react-photos-viewer.netlify.app/)
 
 ## Running the Project Locally
 
