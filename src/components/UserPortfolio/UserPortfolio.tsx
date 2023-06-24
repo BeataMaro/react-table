@@ -20,7 +20,7 @@ export default function UserPortfolio({ portfolio }: { portfolio: IPhoto[] }) {
             <h4>Other images by this author</h4>
             <section>
               {portfolio?.map((photo) => (
-                <img src={photo.urls?.regular} alt={photo.alt_description} key={photo.id} />
+                <img src={photo.urls?.small} alt={photo.alt_description} key={photo.id} />
               ))}
             </section>
           </>

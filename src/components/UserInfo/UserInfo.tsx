@@ -20,13 +20,16 @@ const StyledUserInfo = styled.article`
   img {
     border-radius: 50%;
   }
+  svg {
+    margin-right: .5rem;
+  }
 `;
 
 const StyledProfileImage = styled.img`
-width: 10rem;
+  width: 10rem;
 `;
 
-export default function UserInfo({ username, big }: { username: string; big?: boolean }) {
+export default function UserInfo({ username, details }: { username: string; details?: boolean }) {
   const [user, setUser] = useState<IUser>();
 
   console.log(username);
@@ -57,11 +60,11 @@ export default function UserInfo({ username, big }: { username: string; big?: bo
             </h3>
             <Link to={`/${user?.username}`}>
               <StyledProfileImage
-                src={big ? user?.profile_image?.large : user?.profile_image?.medium}
+                src={user?.profile_image?.large}
                 alt="author's profile image"
               ></StyledProfileImage>
             </Link>
-            {big ? <p>BIO: {user?.bio}</p> : undefined}
+            {details ? <p>BIO: {user?.bio}</p> : undefined}
             {user.location && (
               <>
                 <FontAwesomeIcon icon={faLocationPin} />

@@ -25,8 +25,8 @@ export const photoApi = createApi({
     getPhotosByUsername: builder.query<IPhoto[], string>({
       query: (keyword) => `users/${keyword}/photos/?client_id=${import.meta.env.VITE_ACCESS_KEY}`,
     }),
-    getPhotosByPage: builder.query<IApi, string>({
-      query: (query) => `photos/?page=${query}&client_id=${import.meta.env.VITE_ACCESS_KEY}`,
+    getPhotosByPage: builder.query<IPhoto[], string>({
+      query: (query) => `photos/?page=${query}&orientation=landscape&per_page=4&client_id=${import.meta.env.VITE_ACCESS_KEY}`,
     }),
   }),
 });

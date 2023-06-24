@@ -17,7 +17,7 @@ export default function UserPage() {
 
   return (
     <>
-      <UserInfo username={username} big={true} />
+      <UserInfo username={username} details={true} />
     </>
   );
 }
