@@ -8,41 +8,6 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-// const InitialPhotoState: IPhoto = {
-//   id: '',
-//   slug: '',
-//   color: '',
-//   urls: {
-//     full: '',
-//     regular: '',
-//     raw: '',
-//     small: '',
-//     thumb: '',
-//   },
-//   blur_hash: '',
-//   description: undefined,
-//   alt_description: undefined,
-//   user: {
-//     id: '',
-//     username: '',
-//     name: '',
-//     first_name: '',
-//     profile_image: {
-//       small: '',
-//     },
-//   },
-//   likes: 0,
-//   width: 0,
-//   height: 0,
-//   current_user_collections: [],
-//   links: {
-//     self: '',
-//     html: '',
-//     download: '',
-//     download_location: '',
-//   },
-// };
-
 export default function HomePage() {
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();

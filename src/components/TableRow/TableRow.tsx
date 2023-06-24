@@ -1,7 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { IPhoto } from '../../models/photo.model';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { IPhoto } from '../../models/photo.model';
 import styled from 'styled-components';
 
 interface props {
@@ -46,12 +46,8 @@ const StyledRow = styled.tr<props>`
 `;
 
 export default function TableRow() {
-  const navigate = useNavigate();
   const apiResults = useSelector((state: RootState) => state.searchResults.searchResults);
 
-  function handleRowClick(username: string, photoId: string) {
-    navigate(`/${username}/${photoId}`);
-  }
   return (
     <>
       {apiResults.map(({ id, color, user, alt_description, likes, urls }: IPhoto) => (

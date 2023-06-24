@@ -13,6 +13,12 @@ export const photoApi = createApi({
           import.meta.env.VITE_ACCESS_KEY
         }`,
     }),
+    getPhotoById: builder.query<IPhoto, string>({
+      query: (keyword) =>
+        `photos/${keyword}/?client_id=${
+          import.meta.env.VITE_ACCESS_KEY
+        }`,
+    }),
     getUserByUsername: builder.query<IUser, string>({
       query: (keyword) => `users/${keyword}/?client_id=${import.meta.env.VITE_ACCESS_KEY}`,
     }),
@@ -27,6 +33,7 @@ export const photoApi = createApi({
 
 export const {
   useGetPhotoByKeywordQuery,
+  useGetPhotoByIdQuery,
   useGetUserByUsernameQuery,
   useGetPhotosByUsernameQuery,
   useGetPhotosByPageQuery,

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faLocationPin, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+import ErrorPage from '../../pages/ErrorPage/ErrorPage';
+import Spinner from '../Spinner/Spinner';
 
 const StyledUserInfo = styled.article`
   padding: 2rem;
@@ -20,15 +22,11 @@ const StyledUserInfo = styled.article`
   }
 `;
 
-interface props {
-  big: boolean;
-}
-
-const StyledProfileImage = styled.img<props>`
-  width: ${({ big }) => (big ? '20rem' : '10rem')};
+const StyledProfileImage = styled.img`
+width: 10rem;
 `;
 
-export default function UserInfo({ username, big = false }: { username: string; big?: boolean }) {
+export default function UserInfo({ username, big }: { username: string; big?: boolean }) {
   const [user, setUser] = useState<IUser>();
 
   console.log(username);
@@ -48,8 +46,10 @@ export default function UserInfo({ username, big = false }: { username: string; 
   return (
     <section>
       <button onClick={() => navigate(-1)}>Back</button>
+      {isLoading && <Spinner />}
+      {error && <ErrorPage />}
       <StyledUserInfo>
-        {user && (
+        {user && !error && (
           <>
             <h2>{user?.username}</h2>
             <h3>
@@ -59,10 +59,9 @@ export default function UserInfo({ username, big = false }: { username: string; 
               <StyledProfileImage
                 src={big ? user?.profile_image?.large : user?.profile_image?.medium}
                 alt="author's profile image"
-                big={big ? true : false}
               ></StyledProfileImage>
             </Link>
-            {big && user.bio && <p>BIO: {user?.bio}</p>}
+            {big ? <p>BIO: {user?.bio}</p> : undefined}
             {user.location && (
               <>
                 <FontAwesomeIcon icon={faLocationPin} />

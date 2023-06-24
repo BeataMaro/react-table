@@ -7,7 +7,7 @@ first_name: string;
 for_hire?: boolean;
 id: string;
 numeric_id?: number;
-photos: IImage[];
+photos?: IImage[];
 instagram_username?: string
 last_name?: string;
 links: {
