@@ -9,9 +9,8 @@ import Layout from './Layout/Layout';
 import DetailsPage from './pages/DetailsPage/DetailsPage';
 import HomePage from './pages/HomePage/HomePage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import './index.scss';
 import UserPage from './pages/UserPage/UserPage';
-
+import './index.scss';
 
 const router = createBrowserRouter([
   {
