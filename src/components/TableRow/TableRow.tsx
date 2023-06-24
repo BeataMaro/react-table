@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IPhoto } from '../../models/photo.model';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
@@ -12,8 +12,20 @@ const StyledRow = styled.tr<props>`
   background-color: ${({ bgcolor }) => bgcolor};
   letter-spacing: 2px;
   color: lightgrey;
-  text-shadow: 1px 1px rgba(0,0,0,.8);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.8);
   transition: 0.3s ease;
+
+  a {
+    display: block;
+    width: 100%;
+
+    .link-cell {
+      color: lightgrey;
+      height: 14rem;
+      display: grid;
+      place-items: center;
+    }
+  }
 
   &:hover {
     background-color: grey;
@@ -22,10 +34,8 @@ const StyledRow = styled.tr<props>`
   }
 
   & .image-cell {
-    padding: 0;
     display: flex;
     place-items: center;
-    transition: 0.3s ease;
   }
 
   & td img.image-thumb {
@@ -39,18 +49,30 @@ export default function TableRow() {
   const navigate = useNavigate();
   const apiResults = useSelector((state: RootState) => state.searchResults.searchResults);
 
-  function handleRowClick(username: string) {
-    navigate(`/${username}`);
+  function handleRowClick(username: string, photoId: string) {
+    navigate(`/${username}/${photoId}`);
   }
   return (
     <>
       {apiResults.map(({ id, color, user, alt_description, likes, urls }: IPhoto) => (
-        <StyledRow bgcolor={color} key={id} onClick={() => handleRowClick(user.username)}>
-          <td>{id}</td>
-          <td>{user.first_name}</td>
-          <td>{likes}</td>
+        <StyledRow bgcolor={color} key={id}>
+          <td>
+            <Link to={`${user.username}/${id}`}><p className="link-cell">{id}</p></Link>
+          </td>
+          <td>
+            <Link to={`${user.username}/${id}`}>
+              <p className="link-cell">{user.first_name}</p>
+            </Link>
+          </td>
+          <td>
+            <Link to={`${user.username}/${id}`}>
+              <p className="link-cell">{likes}</p>
+            </Link>
+          </td>
           <td className="image-cell">
-            <img src={urls.small} alt={alt_description} className="image-thumb" />
+            <Link to={`${user.username}/${id}`}>
+              <img src={urls.small} alt={alt_description} className="image-thumb" />
+            </Link>
           </td>
         </StyledRow>
       ))}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header>
-      <Link to="/home">
+      <Link to="/">
         <img src={unsplashLogo} alt="unsplash.com logo" className="unsplash-logo" />
       </Link>
     </header>
