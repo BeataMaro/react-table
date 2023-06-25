@@ -7,7 +7,7 @@ export default function PaginationBar() {
   const [page, setPage] = useState<number>(1);
   const dispatch = useDispatch();
   const { data } = useGetPhotosByPageQuery(String(page));
-  
+
   useEffect(() => {
     if (data) {
       dispatch(updateSearchResults(data));
@@ -25,9 +25,11 @@ export default function PaginationBar() {
   return (
     <div className="pagination-bar">
       <button role="button" onClick={handlePrevPage} disabled={page === 1 ? true : false}>
-        &larr;
+        <i>&larr;</i>
       </button>
-      <button role="button" onClick={handleNextPage}>&rarr; </button>
+      <button role="button" onClick={handleNextPage}>
+        <i>&rarr;</i>
+      </button>
     </div>
   );
 }
