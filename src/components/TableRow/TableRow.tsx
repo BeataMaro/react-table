@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { updateSearchResults } from '../../services/resultsSlice';
 import { IPhoto } from '../../models/photo.model';
 import styled from 'styled-components';
 
@@ -46,14 +48,22 @@ const StyledRow = styled.tr<props>`
 `;
 
 export default function TableRow() {
-  const apiResults = useSelector((state: RootState) => state.searchResults.searchResults);
+  const apiResults = useSelector((state: RootState) => state.searchResults?.searchResults);
+
+  useEffect(() => {
+    if (apiResults) {
+      updateSearchResults(apiResults);
+    }
+  }, [apiResults]);
 
   return (
     <>
-      {apiResults.map(({ id, color, user, alt_description, likes, urls }: IPhoto) => (
+      {apiResults?.map(({ id, color, user, alt_description, likes, urls }: IPhoto) => (
         <StyledRow bgcolor={color} key={id}>
           <td>
-            <Link to={`${user.username}/${id}`}><p className="link-cell">{id}</p></Link>
+            <Link to={`${user.username}/${id}`}>
+              <p className="link-cell">{id}</p>
+            </Link>
           </td>
           <td>
             <Link to={`${user.username}/${id}`}>

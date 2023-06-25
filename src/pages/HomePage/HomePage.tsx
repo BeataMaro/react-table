@@ -12,7 +12,7 @@ export default function HomePage() {
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
 
-  const { data, error, isLoading } = useGetPhotoByKeywordQuery(query || 'bird');
+  const { data, error, isLoading } = useGetPhotoByKeywordQuery(query || 'scandinavian');
 
   useEffect(() => {
     if (data?.results) {

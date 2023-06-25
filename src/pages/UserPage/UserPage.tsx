@@ -9,7 +9,6 @@ export default function UserPage() {
   useEffect(() => {
     async function getUsername() {
       let user = await url.substring(1);
-      await console.log(user);
       await setUsername(user);
     }
     getUsername();

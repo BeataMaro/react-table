@@ -4,10 +4,12 @@ import { photoApi } from '../services/api.service';
 import searchResultsReducer from '../services/resultsSlice';
 import userReducer from '../services/userSlice';
 import portfolioReducer from '../services/portfolioSlice';
+import photoReducer from '../services/photoSlice';
 
 export const store = configureStore({
   reducer: {
     searchResults: searchResultsReducer,
+    photoResults: photoReducer,
     userResults: userReducer,
     portfolioResults: portfolioReducer,
 
@@ -19,6 +21,7 @@ export const store = configureStore({
 
 const rootReducer = combineReducers({
   searchResultsReducer,
+  photoReducer,
   userReducer,
   portfolioReducer,
   [photoApi.reducerPath]: photoApi.reducer,
