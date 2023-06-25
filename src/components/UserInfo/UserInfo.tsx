@@ -13,26 +13,33 @@ import Spinner from '../Spinner/Spinner';
 
 const StyledUserInfo = styled.article`
   padding: 2rem;
-  text-align: center;
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
 
-  img {
-    border-radius: 50%;
-  }
   svg {
     margin-right: 0.5rem;
+  }
+
+  strong {
+    color: grey;
+    font-weight: 100;
+    font-style: italic;
   }
 `;
 
 const StyledProfileImage = styled.img`
-  width: 10rem;
+  border-radius: 50%;
+  width: 8rem;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+  &:hover {
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.7);
+  }
 `;
 
 export default function UserInfo({ username, details }: { username: string; details?: boolean }) {
   const [user, setUser] = useState<IUser>();
-
-  console.log(username);
   const { data, error, isLoading } = useGetUserByUsernameQuery(username);
 
   const dispatch = useDispatch();
@@ -40,7 +47,6 @@ export default function UserInfo({ username, details }: { username: string; deta
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       dispatch(updateUserResult(data));
       setUser(data);
     }
@@ -49,52 +55,57 @@ export default function UserInfo({ username, details }: { username: string; deta
   return (
     <section>
       {details && <button onClick={() => navigate(-1)}>Back</button>}
-      {isLoading && <Spinner />}
-      {error && <ErrorPage />}
+      {isLoading && <Spinner data-testid="spinner" />}
+      {error && <ErrorPage data-testid="error-page" />}
       <StyledUserInfo>
         {user && !error && (
           <>
-            <h2>{user?.username}</h2>
-            <h3>
-              {user?.first_name} {user?.last_name}
-            </h3>
             <Link to={`/${user?.username}`}>
               <StyledProfileImage
                 src={user?.profile_image?.large}
                 alt="author's profile image"
               ></StyledProfileImage>
             </Link>
-            {details ? <p>BIO: {user?.bio}</p> : undefined}
-            {user.location && (
+            <h3>{user?.username}</h3>
+
+            {details && (
               <>
-                <FontAwesomeIcon icon={faLocationPin} />
-                <strong>location: {user.location}</strong>
+                <h2>
+                  {user?.first_name} {user?.last_name}
+                </h2>
+                <strong>BIO: {user?.bio}</strong>
+                {user.location && (
+                  <>
+                    <FontAwesomeIcon icon={faLocationPin} />
+                    <strong>location: {user.location}</strong>
+                  </>
+                )}
+                {user.portfolio_url && (
+                  <a href={user.portfolio_url} target="_blank" rel="no-refferer">
+                    <strong>Portfolio</strong>
+                  </a>
+                )}
+                <p>Total photos: {user.total_photos}</p>
+                <p>
+                  <FontAwesomeIcon icon={faThumbsUp} />
+                  {user.total_likes}
+                </p>
+                <div className="social-media">
+                  {user.instagram_username && (
+                    <>
+                      <FontAwesomeIcon icon={faInstagram} />
+                      <strong> {user?.instagram_username} </strong>
+                    </>
+                  )}
+                  {user?.social?.twitter_username && (
+                    <>
+                      <FontAwesomeIcon icon={faTwitter} />
+                      <strong> {user?.social?.twitter_username}</strong>
+                    </>
+                  )}
+                </div>
               </>
             )}
-            {user.portfolio_url && (
-              <a href={user.portfolio_url} target="_blank" rel="no-refferer">
-                <strong>Portfolio</strong>
-              </a>
-            )}
-            <p>Total photos: {user.total_photos}</p>
-            <p>
-              <FontAwesomeIcon icon={faThumbsUp} />
-              {user.total_likes}
-            </p>
-            <div className="social-media">
-              {user.instagram_username && (
-                <>
-                  <FontAwesomeIcon icon={faInstagram} />
-                  <strong> {user?.instagram_username} </strong>
-                </>
-              )}
-              {user?.social?.twitter_username && (
-                <>
-                  <FontAwesomeIcon icon={faTwitter} />
-                  <strong> {user?.social?.twitter_username}</strong>
-                </>
-              )}
-            </div>
           </>
         )}
       </StyledUserInfo>

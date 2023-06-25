@@ -24,10 +24,10 @@ export default function PaginationBar() {
 
   return (
     <div className="pagination-bar">
-      <button onClick={handlePrevPage} disabled={page === 1 ? true : false}>
+      <button role="button" onClick={handlePrevPage} disabled={page === 1 ? true : false}>
         &larr;
       </button>
-      <button onClick={handleNextPage}>&rarr; </button>
+      <button role="button" onClick={handleNextPage}>&rarr; </button>
     </div>
   );
 }

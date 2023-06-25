@@ -7,6 +7,7 @@ export default function Header() {
     <header>
       <Link to="/">
         <img src={unsplashLogo} alt="unsplash.com logo" className="unsplash-logo" />
+        <h1>Dynamic Table</h1>
       </Link>
     </header>
   );

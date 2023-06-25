@@ -35,8 +35,6 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-color: $navy;
   background-image: url(/src/assets/y-so-serious-white.png);
-  // background-image: url(/src/assets/shattered.webp);
-  margin: 0;
   min-width: 320px;
 
   #root {
@@ -45,8 +43,9 @@ body {
     flex-direction: column;
 
     h1 {
-      font-size: 3em;
-      line-height: 1.1;
+      font-size: 2.2em;
+      line-height: .8;
+      color: $black;
     }
 
     section {

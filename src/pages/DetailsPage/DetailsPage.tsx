@@ -54,13 +54,11 @@ export default function DetailsPage() {
   useEffect(() => {
     async function getUsername() {
       let user = await url.substring(url.indexOf('/') + 1, url.lastIndexOf('/'));
-      await console.log(user);
       await setUsername(user);
     }
 
     async function getPortfolio() {
       if (data) {
-        await console.log(data);
         await dispatch(updatePortfolioResults(data));
         await setPortfolio(data);
       }
@@ -85,7 +83,7 @@ export default function DetailsPage() {
         {photo.data && <p>{photo.data?.description}</p>}
       </StyledImageDetails>
       {username && !error && !isLoading && <UserInfo username={username} />}
-      <UserPortfolio portfolio={portfolio} />
+      <UserPortfolio portfolio={portfolio} data-testid="user-portfolio" />
     </section>
   );
 }

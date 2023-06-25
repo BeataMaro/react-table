@@ -6,7 +6,7 @@ export interface UserState {
   user: IUser;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   user: {
     bio: '',
     first_name: '',

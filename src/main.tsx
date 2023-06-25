@@ -12,7 +12,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import UserPage from './pages/UserPage/UserPage';
 import './index.scss';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     element: <Layout />,
     errorElement: <ErrorPage />,
