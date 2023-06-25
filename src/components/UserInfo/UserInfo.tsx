@@ -21,7 +21,7 @@ const StyledUserInfo = styled.article`
     border-radius: 50%;
   }
   svg {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -48,7 +48,7 @@ export default function UserInfo({ username, details }: { username: string; deta
 
   return (
     <section>
-      <button onClick={() => navigate(-1)}>Back</button>
+      {details && <button onClick={() => navigate(-1)}>Back</button>}
       {isLoading && <Spinner />}
       {error && <ErrorPage />}
       <StyledUserInfo>
