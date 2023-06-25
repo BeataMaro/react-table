@@ -4,6 +4,9 @@ import { IPhoto } from '../../models/photo.model';
 const StyledUserPortfolio = styled.article`
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  margin-top: 1rem;
+
   img {
     width: 30rem;
     border-radius: 2%;
@@ -13,18 +16,16 @@ const StyledUserPortfolio = styled.article`
 export default function UserPortfolio({ portfolio }: { portfolio: IPhoto[] }) {
   return (
     <section>
-      <StyledUserPortfolio>
-        {portfolio.length && (
-          <>
-            <h4>Other images by this author</h4>
-            <section>
-              {portfolio?.map((photo) => (
-                <img src={photo.urls?.small} alt={photo.alt_description} key={photo.id} />
-              ))}
-            </section>
-          </>
-        )}
-      </StyledUserPortfolio>
+      {portfolio.length && (
+        <>
+          <h4>Other images by this author</h4>
+          <StyledUserPortfolio>
+            {portfolio?.map((photo) => (
+              <img src={photo.urls?.small} alt={photo.alt_description} key={photo.id} />
+            ))}
+          </StyledUserPortfolio>
+        </>
+      )}
     </section>
   );
 }
